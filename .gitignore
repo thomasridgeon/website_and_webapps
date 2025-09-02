@@ -1,0 +1,26 @@
+# Environment variables
+.env
+
+# SQLite databases
+/db/*.sqlite3
+
+# Log files
+/log/*.log
+
+# Temporary files
+/tmp
+/*.tmp
+
+# IDE/editor files
+*.swp
+*.swo
+*.idea/
+*.vscode/
+
+# Bundler
+/vendor/bundle
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
