@@ -38,6 +38,16 @@ configure :development do
   require 'pry-byebug'
 end
 #---Middleware------
+
+# use Rack::Session::Pool is for storing on the server. However, what would be even more secure would be to store in active record using activerecord session_store:
+
+# use ActiveRecord::SessionStore, {
+#  key: 'rack.session',
+#  expire_after: 3600,
+#  secure: true,
+#  httponly: true
+# }
+
 use Rack::Session::Pool, {
   key: 'rack.session',
   expire_after: 3600, # 1 hour
@@ -45,7 +55,7 @@ use Rack::Session::Pool, {
   httponly: true # not accessible via JS
 }
 # if I do not do this, that means all session data (user_id, derived_key, etc) is stored directly inside a cookie in the user's browser.
-# with use Rack::Session::Pool, the browser only gets a random session ID, the actual session data is stored securely on the server.
+# with use Rack::Session::Pool, the browser only gets a random session ID, the actual session data is stored on the server, which is at least safer than storing in the broswer.
 # so even if someone steals the cookie, they only get a meaningless session ID
 
 # -----------------------------

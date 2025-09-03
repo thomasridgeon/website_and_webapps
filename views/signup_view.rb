@@ -1,6 +1,6 @@
 require 'erector'
 
-class SignUpPage < Erector::Widget
+class SignupPage < Erector::Widget
   def content
     html do
       head do
@@ -41,7 +41,7 @@ class SignUpPage < Erector::Widget
             # Password
             div do
               label(for: 'password', class: 'block mb-1 font-medium') { text 'Password' }
-              input(type: 'text', name: 'password', id: 'password',
+              input(type: 'password', name: 'password', id: 'password',
                     class: 'border rounded w-full p-2 focus:outline-none focus:ring-2 focus:ring-blue-400')
             end
             # Submit button
