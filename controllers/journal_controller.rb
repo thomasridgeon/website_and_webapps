@@ -6,6 +6,7 @@ require 'bcrypt'
 require_relative '../models/user_model'
 require_relative '../models/note_model'
 require_relative '../views/signup_view'
+require_relative '../views/login_view'
 
 class JournalController < Sinatra::Base
   register Sinatra::ActiveRecordExtension
