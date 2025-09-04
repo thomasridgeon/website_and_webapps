@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
 # web framework
-gem 'activerecord-session_store'
 gem 'sinatra'
 gem 'sinatra-activerecord'
 

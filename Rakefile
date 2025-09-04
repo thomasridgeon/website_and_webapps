@@ -1,7 +1,6 @@
 # Rakefile
 require 'bundler/setup'
 require 'sinatra/activerecord/rake'
-require 'activerecord/session_store'
 
 ENV['RACK_ENV'] ||= 'development'
 
