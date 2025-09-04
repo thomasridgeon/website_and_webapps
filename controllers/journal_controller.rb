@@ -1,16 +1,25 @@
+# use APP_ROOT so we don’t rely on __dir__ gymnastics
+set :database_file, File.join(APP_ROOT, 'config', 'database.yml')
+set :views, File.join(APP_ROOT, 'views')
+
 require 'sinatra/base'           # for creating a Sinatra controller class
 require 'sinatra/activerecord'   # to interact with the database via ActiveRecord
 require 'base64'                 # for encoding/decoding keys if you store them in session
 require 'openssl'                # for AES encryption/decryption
 require 'bcrypt'
-require_relative '../models/user_model'
-require_relative '../models/note_model'
-require_relative '../views/signup_view'
-require_relative '../views/login_view'
-require_relative '../views/journallandingpage_view'
+require File.join(APP_ROOT, 'models', 'user_model')
+require File.join(APP_ROOT, 'models', 'note_model')
+require File.join(APP_ROOT, 'views', 'signup_view')
+require File.join(APP_ROOT, 'views', 'login_view')
+require File.join(APP_ROOT, 'views', 'journallandingpage_view')
 
 class JournalController < Sinatra::Base
   register Sinatra::ActiveRecordExtension
+
+  # Since for my journal I am using modular Sinatra rather than classic sinatra:
+  # I will set :database_file, 'config/database.yml' here.
+  # If I was using classic sinatra for my journal app, I would instead, in my config.ru, under require 'sinatra/activerecord' put:
+  # set :database_file, 'config/database.yml'
 
   #-----------------------------
   # This is for Sinatra's classic application level session settings.

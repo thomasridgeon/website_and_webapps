@@ -22,6 +22,7 @@ gem 'puma'
 # development tools
 group :development do
   gem 'pry-byebug'
+  gem 'racksh'
   gem 'rubocop', require: false
   gem 'sinatra-reloader'
 end

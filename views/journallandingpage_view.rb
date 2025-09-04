@@ -23,17 +23,21 @@ class JournalLandingPage < Erector::Widget
         end
       end
 
-      body(class: 'bg-white text-black') do
-        div(class: 'w-full md:max-w-2xl p-4 md:p-6 pt-16 md:pt-0 flex flex-col items-start mx-4 md:ml-20') do
-          div(class: 'max-w-prose w-full') do
-            h1(class: 'text-5xl md:text-7xl font-bold mt-10 md:mt-28 mb-10 text-left') do # h1 only needs a bottom margin to space itself from the paragraphs below.
-              text 'Welcome to my encrypted journal app!'
-            end
-            p(class: 'text-2xl md:text-5xl font-semibold mb-8 text-left') do
-              text 'Sign up to get started with creating and managing your notes securely'
-            end
-            a(href: '/journal/signup', class: 'text-lg md:text-2xl font-bold mb-8 text-left') { text 'Sign Up' }
-            a(href: '/journal/login', class: 'text-lg md:text-2xl font-bold mb-8 text-left') { text 'Log In' }
+      body(class: 'flex items-center justify-center min-h-screen p-4') do
+        # parent container
+        div(class: 'w-full max-w-md bg-white p-6 rounded-lg shadow-md') do
+          h1(class: 'text-2xl sm:text-3xl font-bold mb-6 text-center text-black') { text 'Encrypted Journal' }
+          p(class: 'text-lg sm:text-2xl font-semibold mb-6 text-center text-black') do
+            text 'Sign up or log in to get started with creating and managing your notes securely'
+          end
+          a(href: '/journal/signup',
+            class: 'text-base sm:text-lg font-semibold mb-6 text-center text-blue-400 underline') do
+            text 'Sign Up'
+          end
+          br
+          a(href: '/journal/login',
+            class: 'text-base sm:text-lg font-semibold mb-6 text-center text-blue-400 underline') do
+            text 'Log In'
           end
         end
       end

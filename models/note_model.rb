@@ -2,8 +2,6 @@ require 'sinatra/activerecord'
 require 'openssl'
 require 'base64'
 
-ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'] || 'sqlite3:db/development.sqlite3')
-
 class Note < ActiveRecord::Base # makes Note an activerecord model
   belongs_to :user # sets up a 1-1 relationship: each note belongs to a user. This allows for note.user to get the owner and user.notes for all the notes of a user.
   CIPHER_ALGO = 'aes-256-gcm' # defines encryption algorithm

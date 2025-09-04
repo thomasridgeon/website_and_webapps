@@ -2,8 +2,6 @@ require 'sinatra/activerecord'
 require 'bcrypt'
 require 'securerandom'
 
-ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'] || 'sqlite3:db/development.sqlite3')
-
 class User < ActiveRecord::Base
   has_many :notes, dependent: :destroy
   has_secure_password

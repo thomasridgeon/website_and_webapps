@@ -5,29 +5,42 @@ Bundler.require
 # Load environment variables
 require 'dotenv/load'
 
+#---app root------
+APP_ROOT = File.expand_path(__dir__) unless defined?(APP_ROOT)
+ENV['APP_ROOT'] ||= APP_ROOT
+# This ensures APP_ROOT always points to your project root (website_and_webapps).
+# This is to avoid some complications I was running into while trying to set my database_file in my journal_controller
+
 # -----------------------------
 # Classic Sinatra website
 # -----------------------------
-require_relative 'controllers/homepage_controller'
-require_relative 'views/homepage_view'
-require_relative 'controllers/aboutme_controller'
-require_relative 'views/aboutme_view'
-require_relative 'controllers/projects_controller'
-require_relative 'views/projects_view'
-require_relative 'controllers/resume_controller'
-require_relative 'views/resume_view'
-require_relative 'controllers/sunbenefits_controller'
-require_relative 'views/sunbenefits_view'
-require_relative 'controllers/portcharges_controller'
-require_relative 'views/portcharges_view'
-require_relative 'controllers/solardcalculator_controller'
-require_relative 'views/solardcalculator_view'
+require File.join(APP_ROOT, 'controllers', 'homepage_controller')
+require File.join(APP_ROOT, 'views', 'homepage_view')
+require File.join(APP_ROOT, 'controllers', 'aboutme_controller')
+require File.join(APP_ROOT, 'views', 'aboutme_view')
+require File.join(APP_ROOT, 'controllers', 'projects_controller')
+require File.join(APP_ROOT, 'views', 'projects_view')
+require File.join(APP_ROOT, 'controllers', 'resume_controller')
+require File.join(APP_ROOT, 'views', 'resume_view')
+require File.join(APP_ROOT, 'controllers', 'sunbenefits_controller')
+require File.join(APP_ROOT, 'views', 'sunbenefits_view')
+require File.join(APP_ROOT, 'controllers', 'portcharges_controller')
+require File.join(APP_ROOT, 'views', 'portcharges_view')
+require File.join(APP_ROOT, 'controllers', 'solardcalculator_controller')
+require File.join(APP_ROOT, 'views', 'solardcalculator_view')
 
 # -----------------------------
 # Modular Journal app
 # -----------------------------
-require_relative 'controllers/journal_controller'
-require_relative 'views/journallandingpage_view'
+require File.join(APP_ROOT, 'controllers', 'journal_controller')
+require File.join(APP_ROOT, 'views', 'journallandingpage_view')
+
+# using Sinatra classic for the more “static” part of my site (home, about, resume, projects, etc.) and Sinatra modular for the journal app.
+# this way, the journal app can be its own product inside my site.
+# keeping the journal modular ensures cleaner separation — /journal is truly its own app, isolated from /.
+# each app can have its own configuration (database, sessions, views, etc.)
+# more scalable for if I add multiple other more complex apps (e.g., /journal, /shop, etc.
+
 # -----------------------------
 # Development-only tools
 # -----------------------------
