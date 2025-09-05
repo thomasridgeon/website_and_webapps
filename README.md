@@ -11,9 +11,9 @@ Each page/app has:
 - These run in the context of Sinatra::Application (the default Sinatra::Base subclass).
 
 More complicated apps (requiring user authentication, database-backed models, session handling, and storage with multiple routes) written in modular Sinatra style. For my modular app, I define a custom Sinatra::Base subclass and mount it with Rack::URLMap.
-This allowed for the app to be isolated with its own configuration and scale independently.
+This allowed for the more complicated app to be isolated with its own configuration and scale independently.
 
-Ultimately, I ran into challenges maintaining this hybrid approach and migrated the entire project to Rails for better scalability and maintainability.
+Ultimately, I ran into challenges maintaining this hybrid approach and migrated the entire project to Rails.
 
 (Please note: the code includes extensive inline comments, written as “study notes” while I was learning.)
 
