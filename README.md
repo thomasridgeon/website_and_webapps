@@ -3,17 +3,14 @@
 This repository contains my expanded website and web apps, built while learning Ruby and experimenting with Sinatra in both classic and modular styles.
 
 **Structure**
-*Static pages & simple apps* 
-Written in classic Sinatra style.
+Static pages & simple apps written in classic Sinatra style.
 Each page/app has:
 - A controller file (routes + logic).
 - A corresponding view file built with Erector (for HTML rendering) and Tailwind CSS (for styling).
 - These run in the context of Sinatra::Application (the default Sinatra::Base subclass).
 
-*More Complicated Apps*
-Required user authentication, database-backed models, session handling, and storage with multiple routes.
-Therefore written in modular Sinatra style, defining a custom Sinatra::Base subclass and mounting it with Rack::URLMap.
-This allowed the app to be isolated with its own configuration and scale independently.
+More complicated apps (requiring user authentication, database-backed models, session handling, and storage with multiple routes) written in modular Sinatra style. For my modular app, I define a custom Sinatra::Base subclass and mount it with Rack::URLMap.
+This allowed for the app to be isolated with its own configuration and scale independently.
 
 Ultimately, I ran into challenges maintaining this hybrid approach and migrated the entire project to Rails for better scalability and maintainability.
 
