@@ -1,12 +1,23 @@
 # My Website and Web Apps
 
-This is the repository for my expanded upon website and web apps, as I continued my journey learning to program in Ruby. This time I am using a hybrid Sinatra setup. Static web pages and my first two web apps, which were quite simple, were written in classic Sinatra style. While the third web app I started- which was a bit more complex in that it had to handle authentication and database interactions- was written in a modular style. 
+This repository contains my expanded website and web apps, built while learning Ruby and experimenting with Sinatra in both classic and modular styles.
 
-With regard to my static web pages and the two simple web apps, for each page/app I have a controller file with routes and logic and a corresponding view file with an Erector widget to render the html and Tailwind CSS. These pages/apps operate in the context of Sinatra::Application, which is a Sinatra::Base subclass that Sinatra defines automatically as the default. 
+**Structure**
+*Static pages & simple apps* 
+Written in classic Sinatra style.
+Each page/app has:
+- A controller file (routes + logic).
+- A corresponding view file built with Erector (for HTML rendering) and Tailwind CSS (for styling).
+- These run in the context of Sinatra::Application (the default Sinatra::Base subclass).
 
-Because my third app required user authentication, database-backed models, storage with multiple routes and session handing, I chose the modular approach, defining my own Sinatra::Base subclass and telling Rack to mount it using Rack::URLMap. That way, this app could be isolated from my other pages/apps and have its own configuration, allowing it to scale as its own mini-app. As I explain below in the description for this app, I ultimately ran into trouble with this approach and migrated my entire project to Rails. 
+*More Complicated Apps*
+Required user authentication, database-backed models, session handling, and storage with multiple routes.
+Therefore written in modular Sinatra style, defining a custom Sinatra::Base subclass and mounting it with Rack::URLMap.
+This allowed the app to be isolated with its own configuration and scale independently.
 
-(Note: the code contains a lot of comments, which are my "study notes").
+Ultimately, I ran into challenges maintaining this hybrid approach and migrated the entire project to Rails for better scalability and maintainability.
+
+(Please note: the code includes extensive inline comments, written as “study notes” while I was learning.)
 
 ---
 
@@ -22,7 +33,9 @@ A web app which tells you the current UV index of the sun and calculates, based 
 
 **Encrypted Journal**
 
-The above Port Charges Calculator and Solar D Calculator apps, as well as most of the website, are written in a classic Sinatra style. However, I chose to start writing my Encrypted Journal app using a modeular sytle, as it would have to handle authentication and database interaction. However, while building the app with a modular JournalController, I ran into persistent problems with getting ActiveRecord to recognize and connect to the local SQLite database. 
+The above Port Charges Calculator and Solar D Calculator apps, as well as all static web pages, are written in classic Sinatra style. However, I chose to start writing my Encrypted Journal app in modular Sinatra sytle, as it would have to handle authentication, database-backed models, session handling, and storage with multiple routes. 
+
+I ran into persistent problems with getting ActiveRecord to recognize and connect to the local SQLite database. 
 
 Running racksh or bundle exec puma resulted in errors:
 - ActiveRecord::Base.connection.tables in racksh showed no database connected.
