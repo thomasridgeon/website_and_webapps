@@ -3,6 +3,7 @@
 This repository contains my expanded website and web apps, built while learning Ruby and experimenting with Sinatra in both classic and modular styles.
 
 **Structure**
+
 Static pages & simple apps written in classic Sinatra style.
 Each page/app has:
 - A controller file (routes + logic).
