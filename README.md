@@ -1,6 +1,10 @@
 # My Website and Web Apps
 
-This is a repository for my website and the web apps I have created while learning to program in Ruby, using a combination of a Classic and Modular Sinatra framework.
+This is the repository for my expanded upon website and web apps, as I continued my journey learning to program in Ruby. This time I am using a hybrid Sinatra setup. Static web pages and my first two web apps, which were quite simple, were written in classic Sinatra style. While the third web app I started- which was a bit more complex in that it had to handle authentication and database interactions- was written in a modular style. 
+
+With regard to my static web pages and the two simple web apps, for each page/app I have a controller file with routes and logic and a corresponding view file with an Erector widget to render the html and Tailwind CSS. These pages/apps operate in the context of Sinatra::Application, which is a Sinatra::Base subclass that Sinatra defines automatically as the default. 
+
+Because my third app required user authentication, database-backed models, storage with multiple routes and session handing, I chose the modular approach, defining my own Sinatra::Base subclass and telling Rack to mount it using Rack::URLMap. That way, this app could be isolated from my other pages/apps and have its own configuration, allowing it to scale as its own mini-app. As I explain below in the description for this app, I ultimately ran into trouble with this approach and migrated my entire project to Rails. 
 
 (Note: the code contains a lot of comments, which are my "study notes").
 
@@ -18,7 +22,7 @@ A web app which tells you the current UV index of the sun and calculates, based 
 
 **Encrypted Journal**
 
-The above Port Charges Calculator and Solar D Calculator apps, as well as most of the website, are written using more of a classic Sinatra framework. However, the Encrypted Journal app which I started to build was written using a modular Sinatra framework. However, while building the app with a modular JournalController, I ran into persistent problems with getting ActiveRecord to recognize and connect to the local SQLite database. 
+The above Port Charges Calculator and Solar D Calculator apps, as well as most of the website, are written in a classic Sinatra style. However, I chose to start writing my Encrypted Journal app using a modeular sytle, as it would have to handle authentication and database interaction. However, while building the app with a modular JournalController, I ran into persistent problems with getting ActiveRecord to recognize and connect to the local SQLite database. 
 
 Running racksh or bundle exec puma resulted in errors:
 - ActiveRecord::Base.connection.tables in racksh showed no database connected.
@@ -82,6 +86,7 @@ To navigate to the Port Charges Calculator, use the /portcharges path, for examp
 
 To navigate to the Solar D Calculator, use the /solardcalculator path. for example http://0.0.0.0:9292/solardcalculator 
 
+The Encrypted Journal App was not finished and therefore cannot be tried. For this, please see the latest version of my project which has now migrated to Rails. 
 
 
 
